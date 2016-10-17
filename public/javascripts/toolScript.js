@@ -12,22 +12,31 @@ $("#button1").click(function(){
 });
 
 $("#button2").click(function(){
+
+    var problemTwoInput = $("#max").val();
+
     $.post("largenumber",
     {
-        name: "Donald Duck"
+        numberArray: problemTwoInput
     },
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+        //alert("Data: " + data + "\nStatus: " + status);
+        $("#problemTwo").append('<p>Largest number is: ' + data.max);
     });
 });
 
 $("#button3").click(function(){
+
+    // get array input
+    var problemThreeInput = $("#evenNumber").val();
+
     $.post("evennumber",
     {
-        name: "Donald Duck"
+      numberArray: problemThreeInput
     },
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+        //alert("Data: " + data + "\nStatus: " + status);
+        $("#problemThree").append('<p>Contains even number: ' + data.containsEven);
     });
 });
 
