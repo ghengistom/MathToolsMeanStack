@@ -41,14 +41,16 @@ $("#button3").click(function(){
 });
 
 $("#button4").click(function(){
-    $.post("everynumbereven",
+    var problemFourInput = $("#everyNumberEven").val();
+    $.post("alleven",
     {
-        name: "Donald Duck"
+        numberArray: problemFourInput
     },
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+          $("#problemFour").append('<p>They are all even: ' + data.isThereAnEvenNumber);
     });
 });
+
 
 $("#button5").click(function(){
     $.post("arrayinstring",
