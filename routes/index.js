@@ -57,7 +57,7 @@ router.post('/evennumber', function(req, res, next){
     if (numberArray[i] % 2 == 0)
       check = true;
   }
-  res.json({ "is false" : check});
+  res.json({ "containsEven" : check.toString()});
 });
 
 
@@ -71,7 +71,7 @@ router.post('/alleven', function(req, res, next){
       check = false;
   }
 
-  res.json({ "isThereAnEvenNumber" : check});
+  res.json({ "isThereAnEvenNumber" : check.toString()});
 });
 
 
