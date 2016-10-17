@@ -49,68 +49,63 @@ router.post('/largenumber', function(req, res, next){
 
 
 router.post('/evennumber', function(req, res, next){
-  var even = 1;
   var numberArray = JSON.parse(req.body.numberArray);
-
+  var check = false;
 
   for (var i = 0; i<numberArray.length; i++)
   {
-
     if (numberArray[i] % 2 == 0)
-    {
-      console.log("true");
-      return true;
-    }
-    else
-    {
-      console.log("false");
-      return false;
-    }
-
+      check = true;
   }
-
-
+  res.json({ "is false" : check});
 });
 
 
 router.post('/alleven', function(req, res, next){
-  //get the data from the req object json array
-  //call the function called average which is located in
-  //antoher file and pass the data into as a parameter
-  //get the return value form the function
-  //return the value which is the JSON object, to the user via the res
-  //object
-  //do this for all 6 functions
+  var numberArray = JSON.parse(req.body.numberArray);
+  var check = true;
 
+  for (var i = 0; i<numberArray.length; i++)
+  {
+    if (numberArray[i] % 2 != 0)
+      check = false;
+  }
 
+  res.json({ "isThereAnEvenNumber" : check});
 });
 
 
 router.post('/stringsearch', function(req, res, next){
-  //get the data from the req object json array
-  //call the function called average which is located in
-  //antoher file and pass the data into as a parameter
-  //get the return value form the function
-  //return the value which is the JSON object, to the user via the res
-  //object
-  //do this for all 6 functions
+   var stringArray = JSON.parse(req.body.stringArray);
+   var stringCheck = JSON.parse(req.body.stringCheck);
+   var check = false;
 
+   for (var i = 0; i < stringArray.length; i++) {
+     if (stringArray[i] === stringCheck)
+       check = true;
+   }
+
+   res.json({ "result" : check });
 
 });
 
 
 router.post('/stringsearchtwice', function(req, res, next){
-  //get the data from the req object json array
-  //call the function called average which is located in
-  //antoher file and pass the data into as a parameter
-  //get the return value form the function
-  //return the value which is the JSON object, to the user via the res
-  //object
-  //do this for all 6 functions
+    var stringArray = JSON.parse(req.body.stringArray);
+    var stringCheck = JSON.parse(req.body.stringCheck);
+    var count = 0;
+    var check = false;
 
+    for (var i = 0; i < stringArray.length; i++) {
+      if (stringArray[i] === stringCheck)
+        count++;
+    }
+
+    if (count > 1)
+      check = true;
+    res.json({ "result" : check });
 
 });
-
 
 
 module.exports = router;
